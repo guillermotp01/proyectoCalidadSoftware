@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ECODAR</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <header style="background-color: lightgrey">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" th:href="@{/}">
+                            <img width="100" height="100" src="logo_ecodar.png" alt="alt"/>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" th:href="@{/}">
+                                        <i class="bi bi-house-fill"></i>
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" th:href="@{/nosotros}">
+                                        <i class="bi bi-info-circle"></i>
+                                        Nosotros
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/producto/listar}">
+                                        <i class="bi bi-grid-fill"></i>
+                                        Productos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/acceso}">
+                                        <i class="bi bi-person-fill"></i>
+                                        Ingreso o Registro
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="carrito">
+                                <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                                    <i class="bi bi-cart4"></i> 
+                                    Carrito: 
+                                    <span class="montoCarrito">S/.0.00</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="container">
+            <h1 class="text-center my-5" >Iniciar Sesión</h1>
+            <!-- Pills content -->
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                    <form>
+                        <p class="text-center">INGRESA TU CUENTA:</p>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" name="user" class="form-control" />
+                            <label class="form-label" for="loginName">Username</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" name="clave" class="form-control" />
+                            <label class="form-label" for="loginPassword">Password</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Not a member? <a th:href="@{/cliente/nuevo}">Register</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Pills content -->
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

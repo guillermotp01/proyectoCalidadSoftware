@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ECODAR</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <header style="background-color: lightgrey">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" th:href="@{/}">
+                            <img width="100" height="100" src="logo_ecodar.png" alt="alt"/>
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/}">
+                                        <i class="bi bi-house-fill"></i>
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/nosotros}">
+                                        <i class="bi bi-info-circle"></i>
+                                        Nosotros
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/producto/listar}">
+                                        <i class="bi bi-grid-fill"></i>
+                                        Productos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/venta/reporte}">
+                                        <i class="bi bi-bag-fill"></i>
+                                        Mis Compras
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/cliente/nuevo}">
+                                        <i class="bi bi-person-fill"></i>
+                                        Registrarse
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="carrito">
+                                <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                                    <i class="bi bi-cart4"></i> 
+                                    <span class="montoCarrito">CARRITO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="container my-5">
+            <img src="BannerEcodar.png" alt="alt" width="1300" height="350"/>
+        </div>
+        <div class="my-5" style="text-align: justify">
+            <h1 class="text-center my-5" >Nuestros Productos</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4" >
+                        <div class="card" style="width: 22rem;">
+                            <img src="utilesescolares.jpg" class="card-img-top" width="600" height="230">
+                            <div class="card-body">
+                                <h5 class="card-title">Utiles Escolares</h5>
+                                <p class="card-text">Contamos con mas de 150 productos de utiles escolares de las marcas mas conocidas en el mercado.</p>
+                                <a th:href="@{/producto/listar}" class="btn btn-primary">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" style="width: 22rem;">
+                            <img src="articulos de oficina.jpg" class="card-img-top" width="600" height="230">
+                            <div class="card-body">
+                                <h5 class="card-title">Articulos de Oficina</h5>
+                                <p class="card-text">Contamos con mas de 200 productos de articulos de oficina de las marcas mas conocidas en el mercado.</p>
+                                <a th:href="@{/producto/listar}" class="btn btn-primary">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card" style="width: 22rem;">
+                            <img src="articulos de limpieza.jpg" class="card-img-top" width="600" height="230">
+                            <div class="card-body">
+                                <h5 class="card-title">Articulos de Limpieza</h5>
+                                <p class="card-text">Contamos con mas de 40 productos de articulos de limpieza de las marcas mas conocidas en el mercado.</p>
+                                <a th:href="@{/producto/listar}" class="btn btn-primary">Ver Mas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

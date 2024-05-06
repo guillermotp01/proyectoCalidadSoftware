@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ECODAR</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/style.css"/>
+    </head>
+    
+    <body>
+        <header style="background-color: lightgrey">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" th:href="@{/}">
+                            <img width="250" height="65" src="/logo_ecodar.png" alt="alt" />
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/}">
+                                        <i class="bi bi-house-fill"></i>
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/nosotros}">
+                                        <i class="bi bi-info-circle"></i>
+                                        Nosotros
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/producto/listar}">
+                                        <i class="bi bi-grid-fill"></i>
+                                        Productos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/venta/reporte}">
+                                        <i class="bi bi-bag-fill"></i>
+                                        Mis Compras
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="carrito">
+                                <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                                    <i class="bi bi-cart4"></i>
+                                    <span class="montoCarrito">CARRITO</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        
+        <main class="d-flex flex-nowrap">
+
+            <!-- Aqui tendria que ir mi información (Lista, Nuevo, Editar -->
+            <div class="container">
+
+                <hr>
+                <div class="alert alert-primary" role="alert">
+                    <h1 class="text-center">Registrate Aquí</h1>
+                </div>
+                <hr>
+
+                <form action="/cliente/registrar" method="post" class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" class="form-control" name="nom" placeholder="Nombre">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" name="ape" placeholder="Apellido">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">DNI</label>
+                        <input type="text" class="form-control" name="dni" placeholder="DNI">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Celular</label>
+                        <input type="text" class="form-control" name="cel" placeholder="Celular">
+                    </div>
+
+                    <div class="col-6">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" class="form-control" name="dir" placeholder="Dirección del Usuario">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="correo" placeholder="Email">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" name="user" placeholder="Nombre de Usuario">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="clave" placeholder="Contraseña">
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
+                    </div>
+
+                </form>
+
+            </div>     
+
+        </main>
+
+    </body>
+</html>

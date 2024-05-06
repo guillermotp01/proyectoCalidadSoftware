@@ -1,0 +1,25 @@
+.carrito{
+    border: 2px solid #ddd;
+    float: right;
+    font-size: 18px;
+    padding: 10px;
+}
+.montoCarrito {
+    color: black;
+    font-weight: 700;
+}
+.nosotros{
+    text-align: justify
+}
+.carrusel{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+}
+.elemento{
+    flex: 1 0 auto;
+    margin: 0 1px;
+    background-color: green;
+    width: 300px;
+    height: 300px;
+}

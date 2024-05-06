@@ -1,0 +1,113 @@
+<html>
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+
+    <body>  
+        <header style="background-color: rgb(180, 180, 180)">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" th:href="@{/}">
+                            <img width="130" src="/logo_ecodar.png" alt="logo de la empresa" />
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" th:href="@{/}">
+                                        Inicio
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/nosotros}">
+                                        Nosotros
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/producto/listar}">
+                                        Productos
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" th:href="@{/venta/reporte}">
+                                        Mis Compras
+                                    </a>
+                                </li>
+                            </ul>
+                            <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                                <i class="bi bi-cart4" style="font-size: 30px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    
+        <div class="container my-5">
+            <h3 class="text-center my-4">PRODUCTOS</h3>
+
+            <div class="d-flex justify-content-between">
+                <form action="/producto/buscar" method="post">
+                    <div class="input-group mb-3">
+                        <select class="form-select" name="desc" aria-label="Default select example">
+                            <option selected>Seleccionar Categoria</option>
+                            <option value="Artículos de Limpieza">Artículos de Limpieza</option>
+                            <option value="Artículos de Oficina">Artículos de Oficina</option>
+                            <option value="Útiles Escolares">Útiles Escolares</option>
+                        </select>
+                        <button class="btn btn-outline-secondary" type="submit">Listar</button>
+                    </div>
+                </form>
+    
+                <form action="/producto/buscar" method="post">
+                    <div class="input-group mb-3">
+                        <input type="text" name="desc" class="form-control" placeholder="Ingresar descripcion">
+                        <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+
+            <div class="col-md-9 w-100">
+                <ul class="row p-0">
+                    <div th:each="producto,x : ${Producto}" class="col-12 col-md-4">
+                        <div class="mb-3 card">
+                            <div class="mx-3 card-body">
+                                <div class="w-20 text-center">
+                                    <img th:src="${producto.imagen_url}" alt="Imagen del producto" width="40%">
+                                </div>
+                                <hr>
+                                <h5 th:text="${producto.nombre}" class="card-title"></h5>
+                                <p th:text="${producto.categoria}" class="card-text"></p>
+                                <p th:text="${producto.descripcion}" class="card-text"></p>
+                                <p th:text="${producto.marca}" class="card-text"></p>
+                                <div class="d-flex justify-content-between">
+                                    <strong class="d-flex mt-2">S/. <p th:text="${producto.precio}"  class="card-text"></p></strong>
+                                    <button class="btn btn-success">
+                                        <a th:href="@{/producto/detalle(cod=${producto.id})}" target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
+                                            Detalles
+                                        </a> 
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+    </body>
+
+</html>

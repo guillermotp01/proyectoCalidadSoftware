@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nosotros</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header style="background-color: lightgrey">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" th:href="@{/}">
+                        <img width="100" height="100" src="logo_ecodar.png" alt="alt"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" th:href="@{/}">
+                                    <i class="bi bi-house-fill"></i>
+                                    Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/nosotros}">
+                                    <i class="bi bi-info-circle"></i>
+                                    Nosotros
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/producto/listar}">
+                                    <i class="bi bi-grid-fill"></i>
+                                    Productos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/venta/reporte}">
+                                    <i class="bi bi-bag-fill"></i>
+                                    Mis Compras
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="carrito">
+                            <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                                <i class="bi bi-cart4"></i>
+                                <span class="montoCarrito">CARRITO</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="nosotros my-5">
+        <h1 class="text-center my-5">¿Quiénes somos?</h1>
+        <div class="container">
+            <div class="row justify-content-center my-5">
+                <div class="col-6">
+                    <p>Somos una empresa distribuidora, encargada de vender artículos de limpieza
+                        y oficina al por mayor y menor en el departamento de Lima. Tenemos como
+                        visión ser una de la empresas mas reconocidas en este rubro por la calidad
+                        de los productos y servicios al momento de vender al cliente.</p>
+                    <img src="ecodar.jpeg" alt="alt" class="img-fluid" width="800" height="150" />
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-6">
+                    <img src="logo_ecodar.png" alt="alt" class="img-fluid" />
+                </div>
+                <div class="col-6">
+                    <p>La empresa ECODAR PERU, brinda a sus clientes una lista de productos de
+                        distintas marcas reconocidas en el mercado. Actualmente se especializa
+                        en el rubro de útiles de oficina, escolares y limpieza. Nosotros como
+                        empresa brindamos productos de calidad y a un precio cómodo para todos
+                        nuestros clientes, ECODAR lleva sus productos hasta su local, de una manera
+                        rápida y eficaz dentro de un periodo de 48 horas. Asimismo, brindamos al
+                        cliente la orientación de la compra de los productos y detalles que requieran.
+                        Logrando así una comunicación efectiva al momento de ofrecer el producto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="my-5">
+        <h1 class="text-center my-5">Marcas con las que trabajamos</h1>
+
+        <div class="container">
+            <div class="carrusel">
+                <div class="elemento"><img src="Alpha.png" alt="..."></div>
+                <div class="elemento"><img src="Artesco.png" alt="..."></div>
+                <div class="elemento"><img src="Arti.png" alt="..."></div>
+                <div class="elemento"><img src="Daryza.png" alt="..."></div>
+                <div class="elemento"><img src="David.png" alt="..." width="300" height="300"></div>
+                <div class="elemento"><img src="FaberCastell.png" alt="..."></div>
+                <div class="elemento"><img src="Maped.png" alt="..." width="300" height="300"></div>
+                <div class="elemento"><img src="Sumac.png" alt="..."></div>
+                <div class="elemento"><img src="UHU.png" alt="..."></div>
+                <div class="elemento"><img src="Vinifan.png" alt="..."></div>
+                <div class="elemento"><img src="stabilo.jpg" alt="..."></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA DE PRODUCTOS FINAL para lista producto
+        <div class="container my-5">
+            <div class="my-5" style="background-color: lightblue; padding: 30px 0">
+                <h1 class="text-center">Articulos de Limpieza</h1>
+            </div>
+            <div style="display: flex; flex-wrap: nowrap; overflow: scroll; padding: 30px 0; height: 360px;">
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Aromatizador.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Aromatizador</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Lejia.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Lejía</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Desinfectante.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Desinfectante</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Papel higienico.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Papel Higienico</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Papel toalla.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Papel Toalla</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Gel lavavajilla.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Gel Lavavajilla</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Limpia todo.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Limpia Todo</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="width: 235px; height: 280px; margin: 0 10px; flex: 1 0 auto;">
+                    <div class="card-body">
+                        <a class="nav-link" th:href="@{/producto/detalle}">
+                            <img src="Limpia vidrio.png" class="card-img-top" width="210" height="210">
+                            <h5 class="text-center my-3">Limpia Vidrio</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+</body>
+
+</html>
