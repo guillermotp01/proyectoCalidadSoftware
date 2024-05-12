@@ -1,4 +1,4 @@
-package com.example.Proyecto.Servicios;
+/*package com.example.Proyecto.Servicios;
 
 import com.example.Proyecto.Clases.Cliente;
 import com.example.Proyecto.Repositorios.ICliente;
@@ -38,3 +38,4 @@ public class ClienteService implements IClienteService{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
+*/

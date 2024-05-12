@@ -1,7 +1,5 @@
 package com.example.Proyecto.Clases;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,19 +11,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Venta")
-public class Venta {
+@Table(name="Usuario")
+public class Usuario {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int id;
-    private Date fecha;
+    private int id_usuario;
+    private String nombre;
+    private String apellido;
+    private String tipoDocumento;
+    private int numeroDocumento;
+    private int celular;
+    private String correo;
+    private String username;
+    private String clave;
+    private String direccion;
     
-    @ManyToOne()
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
-    
-    @ManyToOne()
-    @JoinColumn(name="mediopago_id")
-    private MedioPago mediopago;
-    private double totalVenta;
+    @ManyToOne
+    @JoinColumn(name = "id_rol")
+    private Rol rol;
 }

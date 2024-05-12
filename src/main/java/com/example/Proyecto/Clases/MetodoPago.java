@@ -1,4 +1,3 @@
-/* 
 package com.example.Proyecto.Clases;
 
 import jakarta.persistence.Entity;
@@ -10,17 +9,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="cliente")
-public class Cliente {
+@Table(name="MetodoPago")
+public class MetodoPago {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int id;
-    public String nombre;
-    public String apellido;
-    public String dni;
-    public String celular;
-    public String correo;
-    public String username;
-    public String clave;
-    public String direccion;
-}*/
+    private int id_metodo_pago;
+    private String nombre;
+}

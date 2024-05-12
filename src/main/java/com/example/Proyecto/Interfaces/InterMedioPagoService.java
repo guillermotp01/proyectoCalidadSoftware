@@ -1,4 +1,4 @@
-package com.example.Proyecto.Interfaces;
+/*package com.example.Proyecto.Interfaces;
 
 import com.example.Proyecto.Clases.MedioPago;
 import java.util.List;
@@ -11,3 +11,4 @@ public interface InterMedioPagoService {
     public void Eliminar(int id);
     public List<MedioPago> Buscar(String desc);
 }
+*/

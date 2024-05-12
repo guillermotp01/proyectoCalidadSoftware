@@ -1,6 +1,6 @@
 package com.example.Proyecto.Servicios;
 
-import com.example.Proyecto.Clases.Venta;
+import com.example.Proyecto.Clases.Pedido;
 import com.example.Proyecto.Interfaces.InterVentaService;
 import com.example.Proyecto.Repositorios.InterVenta;
 import java.util.List;
@@ -11,21 +11,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class VentaService implements InterVentaService{
 
-     @Autowired
+    @Autowired
     private InterVenta data;
-     
+
     @Override
-    public List<Venta> Listar() {
-        return (List<Venta>) data.findAll();
+    public List<Pedido> Listar() {
+        return (List<Pedido>) data.findAll();
     }
 
     @Override
-    public Optional<Venta> ConsultarId(int id) {
+    public Optional<Pedido> ConsultarId(int id) {
         return data.findById(id);
     }
 
     @Override
-    public void Guardar(Venta v) {
+    public void Guardar(Pedido v) {
         data.save(v);
     }
 
@@ -35,7 +35,7 @@ public class VentaService implements InterVentaService{
     }
 
     @Override
-    public List<Venta> Buscar(String desc) {
+    public List<Pedido> Buscar(String desc) {
         return data.findForAll(desc);
     }
 

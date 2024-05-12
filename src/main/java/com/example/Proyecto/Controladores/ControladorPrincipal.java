@@ -25,4 +25,12 @@ public class ControladorPrincipal {
     public String verCarrito() {
         return "carritoCompra"; //nuevoUsuario.html
     }
+    @GetMapping("/registro")
+    public String registro() {
+        return "registro"; 
+    }
+    @GetMapping("/login")
+    public String login() {
+        return "login"; 
+    }
 }

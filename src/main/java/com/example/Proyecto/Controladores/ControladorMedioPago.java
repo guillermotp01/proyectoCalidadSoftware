@@ -1,4 +1,4 @@
-package com.example.Proyecto.Controladores;
+/*package com.example.Proyecto.Controladores;
 
 import com.example.Proyecto.Clases.MedioPago;
 import com.example.Proyecto.Interfaces.InterMedioPagoService;
@@ -60,7 +60,7 @@ public class ControladorMedioPago {
                 listaCli.remove(i);
             }
         }
-         */
+
         service.Eliminar(codigo);
         return listarMedioPago(model);
     }
@@ -89,7 +89,7 @@ public class ControladorMedioPago {
                 cli.setDireccion(dir);
             }
         }
-         */
+
         Optional<MedioPago> cli = service.ConsultarId(codigo);
         model.addAttribute("MedioPago", cli);
         return carpeta + "editarMedioPago";
@@ -99,7 +99,7 @@ public class ControladorMedioPago {
     public String actualizarMedioPago(@RequestParam("id") int codigo,
             @RequestParam("nombre") String nombre,
             Model model) {
-        /*
+
         for (int i = 0; i < listaCli.size(); i++) {
             int c = listaCli.get(i).getId();
             if (c == codigo) {
@@ -111,7 +111,7 @@ public class ControladorMedioPago {
                 listaCli.get(i).setDireccion(direccion);
             }
         }
-         */
+         
         MedioPago mp = new MedioPago();
 
         mp.setId(codigo);
@@ -160,6 +160,7 @@ public class ControladorMedioPago {
                 lc.add(cli);
             }
         }
-    */
+    
     }
 }
+*/

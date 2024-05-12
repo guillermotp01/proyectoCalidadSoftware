@@ -1,4 +1,4 @@
-package com.example.Proyecto.Controladores;
+/*package com.example.Proyecto.Controladores;
 
 import com.example.Proyecto.Clases.Cliente;
 import com.example.Proyecto.Interfaces.IClienteService;
@@ -65,8 +65,7 @@ public class ControladorCliente {
     }
     
     @GetMapping("/eliminar") //localhost/eliminar
-    public String EliminarCliente(@RequestParam("cod") int cod,
-                                  Model model)
+    public String EliminarCliente(@RequestParam("cod") int cod, Model model)
     {
         
         service.Eliminar(cod);
@@ -74,8 +73,7 @@ public class ControladorCliente {
     }
     
     @GetMapping("/editar") //localhost/editar
-    public String EditarCliente(@RequestParam("cod") int cod,
-                                  Model model)
+    public String EditarCliente(@RequestParam("cod") int cod, Model model)
     {       
         Optional<Cliente> cli =service.ConsultarId(cod);
         model.addAttribute("cliente", cli);
@@ -106,7 +104,7 @@ public class ControladorCliente {
         service.Guardar(c);//Cuando se envia el ID -> Actualizar
         return ListarCliente(model);
     }
-   /*
+    /*
     @PostMapping("/buscar") //localhost/buscar
     public String BuscarCliente(@RequestParam("desc") String desc,
                                 Model model)
@@ -116,5 +114,7 @@ public class ControladorCliente {
         model.addAttribute("clientes", lc);
         return carpeta+"listaCliente"; //listaCliente.html
     }
-   */
+
 }
+
+*/

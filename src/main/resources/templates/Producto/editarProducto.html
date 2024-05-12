@@ -11,99 +11,59 @@
         <link rel="stylesheet" href="/style.css"/>
     </head>
     <body>
-        <header style="background-color: lightgrey">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" th:href="@{/}">
-                            <img width="250" height="65" src="/logo_ecodar.png" alt="alt" />
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" th:href="@{/}">
-                                        <i class="bi bi-house-fill"></i>
-                                        Inicio
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/nosotros}">
-                                        <i class="bi bi-info-circle"></i>
-                                        Nosotros
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/producto/listar}">
-                                        <i class="bi bi-grid-fill"></i>
-                                        Productos
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" th:href="@{/venta/reporte}">
-                                        <i class="bi bi-person-fill"></i>
-                                        Mis Compras
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="carrito">
-                                <a class="nav-link active" th:href="@{/venta/listarCarrito}">
-                                    <i class="bi bi-cart4"></i>
-                                    <span class="montoCarrito">CARRITO</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </header>
         
+        <div th:replace="~{navegacion :: contenidoNavegacion}"></div>
+
         <div class="container">
             <hr>
             <div class="alert alert-success" role="alert">
                 Formulario para EDITAR PRODUCTO
             </div>
             <hr>
-            <form action="actualizar" method="post" class="row g-3">
-                <div class="col-md-2">
-                    <label class="form-label">Codigo</label>
-                    <input th:field="${Producto.id}" type="text" class="form-control" name="cod" placeholder="Codigo" readonly="readonly">
-                </div>
-                <div class="col-md-5">
+            <form th:action="@{/producto/actualizar/{id}(id=${producto.id_producto})}" method="POST" class="row g-3">
+                <div class="col-md-6">
                     <label class="form-label">Nombre</label>
-                    <input th:field="${Producto.nombre}" type="text" class="form-control" name="nom" placeholder="Nombre">
+                    <input type="text" class="form-control" name="nombre" th:placeholder="${producto.nombre}">
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-6">
                     <label class="form-label">Descripción</label>
-                    <input th:field="${Producto.descripcion}" type="text" class="form-control" name="desc" placeholder="Descripcion">
+                    <input type="text" class="form-control" name="descripcion" th:placeholder="${producto.descripcion}">
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">Categoria</label>
-                    <select th:field="${Producto.categoria}" class="form-select" name="cat" aria-label="Default select example">
-                        <option value="Artículos de Limpieza">Artículos de Limpieza</option>
-                        <option value="Artículos de Oficina">Artículos de Oficina</option>
-                        <option value="Útiles Escolares">Útiles Escolares</option>
-                    </select>
-                    <!--<input type="text" class="form-control" name="cat" placeholder="Categoria">-->
+                    <select class="form-control" id="categoria" name="categoria">
+                        <option value="">Selecciona una categoría</option>
+                        <th:block th:each="categoria : ${categorias}">
+                            <option th:value="${categoria.id_categoria}" th:text="${categoria.nombre}"></option>
+                        </th:block>
+                    </select>                 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">Marca</label>
-                    <input th:field="${Producto.marca}" type="text" class="form-control" name="marca" placeholder="Marca">
+                    <select class="form-control" id="proveedor" name="proveedor">
+                        <option value="">Selecciona un proveedor</option>
+                        <th:block th:each="proveedor : ${proveedores}">
+                            <option th:value="${proveedor.id_proveedor}" th:text="${proveedor.nombre}"></option>
+                        </th:block>
+                    </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <label class="form-label">Precio</label>
-                    <input th:field="${Producto.precio}" type="text" class="form-control" name="pre" placeholder="00.00">
+                    <input type="text" class="form-control" name="precio" th:placeholder="${producto.precio}">
                 </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                    <a class="btn btn-primary" role="button" th:href="@{/producto/listar}">Ver Productos</a>
+                <div class="col-md-6">
+                    <label class="form-label">Stock</label>
+                    <input type="text" class="form-control" name="stock" th:placeholder="${producto.stock}">
                 </div>
+                <div class="col-md-6">
+                    <label class="form-label">URL de la Imagen</label>
+                    <input type="text" class="form-control" name="imagen_url" th:placeholder="${producto.imagen_url}">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
         </div>
+
+        <div th:replace="~{footer :: contenidoFooter}"></div>
     </body>
 </html>
 

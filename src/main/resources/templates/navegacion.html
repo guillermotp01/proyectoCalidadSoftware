@@ -1,0 +1,69 @@
+<header style="background-color: rgb(196, 195, 195)" th:fragment="contenidoNavegacion">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex" th:href="@{/}">
+                    <h2 class="mt-2">Ecodar</h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">
+                                Inicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/nosotros}">
+                                Nosotros
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/producto/listar}">
+                                Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/venta/reporte}">
+                                Mis Compras
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <form class="collapse navbar-collapse d-flex mx-5" role="search">
+                    <input class="form-control" type="search" placeholder="Buscar..." aria-label="Search">
+                    <button class="btn btn-outline" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+
+                <div class="collapse navbar-collapse d-flex">
+                    <div class="dropdown contenido-derecha mx-5">
+                        <div>
+                            <strong>
+                                ¡Hola!
+                            </strong>
+                        </div>
+                        <a class="etiqueta dropdown-toggle d-flex" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: black;">
+                            Inicia Sesión
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/login}">Inicia Sesión</a></li>
+                            <li><a class="dropdown-item" th:href="@{/usuarios/registro}">Regístrate</a></li>
+                        </ul>
+                    </div>
+
+                    <a class="nav-link active" th:href="@{/venta/listarCarrito}">
+                        <i class="bi bi-cart3" style="font-size: 35px;"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

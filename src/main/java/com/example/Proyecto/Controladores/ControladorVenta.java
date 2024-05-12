@@ -1,11 +1,11 @@
-package com.example.Proyecto.Controladores;
+/*package com.example.Proyecto.Controladores;
 
 import com.example.Proyecto.Clases.Carrito;
 import com.example.Proyecto.Clases.Cliente;
 import com.example.Proyecto.Clases.MedioPago;
 import com.example.Proyecto.Clases.Producto;
-import com.example.Proyecto.Clases.Venta;
-import com.example.Proyecto.Clases.VentaDetalle;
+import com.example.Proyecto.Clases.Pedido;
+import com.example.Proyecto.Clases.DetallePedido;
 import com.example.Proyecto.Interfaces.IClienteService;
 import com.example.Proyecto.Interfaces.InterMedioPagoService;
 import com.example.Proyecto.Interfaces.InterProductoService;
@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ControladorVenta {
 
     ArrayList<Carrito> carritoLista = new ArrayList<>();
-    ArrayList<Venta> misVentas = new ArrayList<>();
+    ArrayList<Pedido> misVentas = new ArrayList<>();
 
     String carpeta = "Venta/";
 
@@ -85,7 +85,7 @@ public class ControladorVenta {
         }
 
         // Aqui sera el proceso para registrar
-        Venta v = new Venta();
+        Pedido v = new Pedido();
 
         // c.setId(codigo);
         v.setFecha(fecha);
@@ -96,7 +96,7 @@ public class ControladorVenta {
         service.Guardar(v);
 
         int id_venta = service.UltimoIdVenta();
-        Venta vv = new Venta();
+        Pedido vv = new Pedido();
         vv.setId(id_venta);
 
         // Registrar la venta detalle
@@ -110,7 +110,7 @@ public class ControladorVenta {
             Double cantidad = carritoLista.get(i).getCantidad();
             Double total = carritoLista.get(i).getTotal();
 
-            VentaDetalle vd = new VentaDetalle();
+            DetallePedido vd = new DetallePedido();
             vd.setVenta(vv);
             vd.setProducto(p);
             vd.setDescripcion(descripcion);
@@ -184,7 +184,7 @@ public class ControladorVenta {
     @PostMapping("/buscar")
     public String buscarVenta(@RequestParam("desc") String desc,
             Model model) {
-        List<Venta> lc = service.Buscar(desc);
+        List<Pedido> lc = service.Buscar(desc);
         model.addAttribute("Venta", lc);
         return carpeta + "listaVenta";
     }
@@ -192,13 +192,13 @@ public class ControladorVenta {
     @GetMapping("/editar")
     public String editarVenta(@RequestParam("cod") int codigo,
             Model model) {
-        Optional<Venta> prod = service.ConsultarId(codigo);
+        Optional<Pedido> prod = service.ConsultarId(codigo);
         model.addAttribute("Venta", prod);
         return carpeta + "editarVenta";
     }
     @GetMapping("/listarDetalle")
     public String listarVentaDetalle(@RequestParam("cod") int codigo,Model model) {
-        List<VentaDetalle> vd = service_vd.BuscarPorIdVenta(codigo);
+        List<DetallePedido> vd = service_vd.BuscarPorIdVenta(codigo);
 
          model.addAttribute("Venta", misVentas);
         model.addAttribute("VentaDetalle", vd);
@@ -211,7 +211,7 @@ public class ControladorVenta {
 
         misVentas.clear();
         List<Cliente> listC = service_cli.Listar();
-        List<Venta> listV = service.Listar();
+        List<Pedido> listV = service.Listar();
         Cliente ventasCli = new Cliente();
 
         for (int i = 0; i < listC.size(); i++) {
@@ -238,3 +238,4 @@ public class ControladorVenta {
     }
 
 }
+*/

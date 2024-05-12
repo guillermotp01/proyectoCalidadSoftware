@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Proyecto.Clases.VentaDetalle;
+import com.example.Proyecto.Clases.DetallePedido;
 import com.example.Proyecto.Interfaces.InterVentaDetalleService;
 import com.example.Proyecto.Repositorios.InterVentaDetalle;
 
@@ -17,17 +17,17 @@ public class VentaDetalleService implements InterVentaDetalleService {
     private InterVentaDetalle data;
 
     @Override
-    public List<VentaDetalle> Listar() {
-        return (List<VentaDetalle>) data.findAll();
+    public List<DetallePedido> Listar() {
+        return (List<DetallePedido>) data.findAll();
     }
 
     @Override
-    public Optional<VentaDetalle> ConsultarId(int id) {
+    public Optional<DetallePedido> ConsultarId(int id) {
         return data.findById(id);
     }
 
     @Override
-    public void Guardar(VentaDetalle v) {
+    public void Guardar(DetallePedido v) {
         data.save(v);
     }
 
@@ -37,13 +37,12 @@ public class VentaDetalleService implements InterVentaDetalleService {
     }
 
     @Override
-    public List<VentaDetalle> Buscar(String desc) {
-        // TODO Auto-generated method stub
+    public List<DetallePedido> Buscar(String desc) {
         throw new UnsupportedOperationException("Unimplemented method 'Buscar'");
     }
 
     @Override
-    public List<VentaDetalle> BuscarPorIdVenta(int id) {
+    public List<DetallePedido> BuscarPorIdVenta(int id) {
         return data.FindByIdVenta(id);
     }
 

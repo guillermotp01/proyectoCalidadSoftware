@@ -1,14 +1,14 @@
 package com.example.Proyecto.Interfaces;
 
-import com.example.Proyecto.Clases.Venta;
+import com.example.Proyecto.Clases.Pedido;
 import java.util.List;
 import java.util.Optional;
 
 public interface InterVentaService {
-    public List<Venta> Listar();
-    public Optional<Venta> ConsultarId(int id);
-    public void Guardar(Venta p);
+    public List<Pedido> Listar();
+    public Optional<Pedido> ConsultarId(int id);
+    public void Guardar(Pedido p);
     public void Eliminar(int id);
-    public List<Venta> Buscar(String desc);
+    public List<Pedido> Buscar(String desc);
     public int UltimoIdVenta();
 }

@@ -1,6 +1,6 @@
 package com.example.Proyecto.Repositorios;
 
-import com.example.Proyecto.Clases.Venta;
+import com.example.Proyecto.Clases.Pedido;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InterVenta extends CrudRepository<Venta,Integer>{
+public interface InterVenta extends CrudRepository<Pedido,Integer>{
     @Query(value = "SELECT id FROM Venta "
             + "ORDER BY id DESC "
             + "LIMIT 1", nativeQuery = true)
@@ -20,5 +20,5 @@ public interface InterVenta extends CrudRepository<Venta,Integer>{
             + "OR descripcion LIKE %?1% "
             + "OR cantidad LIKE %?1% "
             + "OR precio LIKE %?1% ",nativeQuery=true)
-    public List<Venta> findForAll(String desc); 
+    public List<Pedido> findForAll(String desc); 
 }

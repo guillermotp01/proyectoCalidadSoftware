@@ -1,4 +1,4 @@
-package com.example.Proyecto.Clases;
+/*package com.example.Proyecto.Clases;
 
 import lombok.Data;
 
@@ -11,3 +11,4 @@ public class Carrito {
     private Double cantidad;
     private Double total;
 }
+*/

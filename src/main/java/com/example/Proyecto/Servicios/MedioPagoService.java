@@ -1,4 +1,4 @@
-package com.example.Proyecto.Servicios;
+/*package com.example.Proyecto.Servicios;
 
 import com.example.Proyecto.Clases.MedioPago;
 import com.example.Proyecto.Interfaces.InterMedioPagoService;
@@ -38,3 +38,4 @@ public class MedioPagoService implements InterMedioPagoService{
         return data.findForAll(desc);
     }
 }
+*/
