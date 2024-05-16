@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InterVenta extends CrudRepository<Pedido,Integer>{
+public interface VentaRepository extends CrudRepository<Pedido,Integer>{
     @Query(value = "SELECT id FROM Venta "
             + "ORDER BY id DESC "
             + "LIMIT 1", nativeQuery = true)

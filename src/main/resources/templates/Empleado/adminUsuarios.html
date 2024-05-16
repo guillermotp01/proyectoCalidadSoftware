@@ -12,9 +12,10 @@
     <body>  
         <div th:replace="~{navegacion :: contenidoNavegacion}"></div>
     
-        <div class="container my-5 min-vh-100">
-            <h3 class="text-center my-4">PRODUCTOS</h3>
+        <div class="container my-5">
+            <h3 class="text-center my-4">ADMINISTRADOR USUARIOS</h3>
 
+            <!--
             <div class="d-flex justify-content-between">
                 <form action="/producto/filtrar" method="POST">
                     <div class="input-group mb-3">
@@ -37,29 +38,31 @@
                     </div>
                 </form>                
             </div>
+            -->
 
-            <hr>
             <div class="col-md-9 w-100">
                 <ul class="row p-0">
-                    <div th:if="${productos.empty}" class="col-12 text-center mt-4">
-                        <i class="bi bi-x-circle" style="color: red; font-size: 60px;"></i>
-                        <p class="mt-4">No hay productos disponibles en este momento.</p>
-                    </div>
-                    <div th:each="producto : ${productos}" class="col-12 col-md-4">
+                    <div th:each="usuario,x : ${usuarios}" class="col-12 col-md-4">
                         <div class="mb-3 card">
                             <div class="mx-3 card-body">
-                                <div class="w-20 text-center">
-                                    <img th:src="${producto.imagen_url}" alt="Imagen del producto" width="40%">
-                                </div>
-                                <hr>
-                                <h5 th:text="${producto.nombre}" class="card-title"></h5>
-                                <p th:text="${producto.descripcion}" class="card-text"></p>
-                                <p th:text="${producto.proveedor.nombre}" class="card-text"></p>
-                                <div class="d-flex justify-content-between">
-                                    <strong class="d-flex mt-2">S/. <p th:text="${producto.precio}" class="card-text"></p></strong>
-                                    <button class="btn btn-success">
-                                        <a th:href="@{/producto/detalle/{id}(id=${producto.id_producto})}" target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
-                                            Detalles
+                                <h5 th:text="${usuario.nombre}" class="card-title"></h5>
+                                <p th:text="${usuario.apellido}" class="card-text"></p>
+                                <p th:text="${usuario.tipo_documento}" class="card-text"></p>
+                                <p th:text="${usuario.numero_documento}" class="card-text"></p>
+                                <p th:text="${usuario.celular}" class="card-text"></p>
+                                <p th:text="${usuario.correo}" class="card-text"></p>
+                                <p th:text="${usuario.username}" class="card-text"></p>
+                                <p th:text="${usuario.direccion}" class="card-text"></p>
+                                <div class="d-flex justify-content-between">                                       
+                                    </button>
+                                    <button class="btn btn-warning">
+                                        <a target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
+                                            Editar
+                                        </a>                                        
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <a target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
+                                            Eliminar
                                         </a>                                        
                                     </button>
                                 </div>
@@ -68,7 +71,6 @@
                     </div>
                 </ul>
             </div>
-            
             
         </div>
         <div th:replace="~{footer :: contenidoFooter}"></div>

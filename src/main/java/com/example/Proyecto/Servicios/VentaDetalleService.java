@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Proyecto.Clases.DetallePedido;
-import com.example.Proyecto.Interfaces.InterVentaDetalleService;
-import com.example.Proyecto.Repositorios.InterVentaDetalle;
+import com.example.Proyecto.Interfaces.InterVentaDetalle;
+import com.example.Proyecto.Repositorios.VentaDetalleRepository;
 
 @Service
-public class VentaDetalleService implements InterVentaDetalleService {
+public class VentaDetalleService implements InterVentaDetalle {
 
     @Autowired
-    private InterVentaDetalle data;
+    private VentaDetalleRepository data;
 
     @Override
     public List<DetallePedido> Listar() {

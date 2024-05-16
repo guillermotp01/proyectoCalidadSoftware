@@ -1,7 +1,7 @@
 package com.example.Proyecto.Servicios;
 
 import com.example.Proyecto.Clases.Producto;
-import com.example.Proyecto.Interfaces.InterProductoService;
+import com.example.Proyecto.Interfaces.InterProducto;
 import com.example.Proyecto.Repositorios.ProductoRepository;
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductoService implements InterProductoService{
+public class ProductoService implements InterProducto{
 
     @Autowired
     private ProductoRepository repositorio;
@@ -44,4 +44,14 @@ public class ProductoService implements InterProductoService{
     public Optional<Producto> ConsultarId(int id) {
         return repositorio.findById(id);
     }
+
+	@Override
+	public List<Producto> Buscar(String nombre) {
+		return repositorio.findByNombre(nombre);
+	}
+
+	/*@Override
+	public List<Producto> Filtrar(int id_categoria) {
+		return repositorio.findByCategoria(id_categoria);
+	}*/
 }

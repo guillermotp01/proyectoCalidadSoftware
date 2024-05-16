@@ -4,7 +4,7 @@ import com.example.Proyecto.Clases.DetallePedido;
 import java.util.List;
 import java.util.Optional;
 
-public interface InterVentaDetalleService {
+public interface InterVentaDetalle {
     public List<DetallePedido> Listar();
     public Optional<DetallePedido> ConsultarId(int id);
     public void Guardar(DetallePedido v);

@@ -1,7 +1,10 @@
 package com.example.Proyecto.Controladores;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.example.Proyecto.Clases.Usuario;
 
 @Controller
 public class ControladorPrincipal {
@@ -23,14 +26,23 @@ public class ControladorPrincipal {
     }
     @GetMapping("/carrito") //localhost/
     public String verCarrito() {
-        return "carritoCompra"; //nuevoUsuario.html
+        return "carritoCompra"; //
     }
     @GetMapping("/registro")
-    public String registro() {
-        return "registro"; 
+    public String Registrar(Model modelo) {
+        Usuario usuario = new Usuario();
+        modelo.addAttribute("usuario", usuario);
+
+        return "/Sesion/registro";
     }
+
     @GetMapping("/login")
     public String login() {
-        return "login"; 
+        return "/Sesion/login"; 
+    }
+
+    @GetMapping("/confirmacion")
+    public String Confirmacion() {
+        return "/Venta/confirmacionVenta"; 
     }
 }

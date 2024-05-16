@@ -1,6 +1,14 @@
 /*package com.example.Proyecto.Controladores;
 
 
+import com.example.Proyecto.Clases.JwtRequest;
+import com.example.Proyecto.Clases.JwtResponse;
+import com.example.Proyecto.Clases.Usuario;
+import com.example.Proyecto.Servicios.Impl.UserDetailsServiceImpl;
+import com.example.Proyecto.config.JwtUtils;
+
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,13 +21,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.Proyecto.Clases.JwtRequest;
-import com.example.Proyecto.Clases.JwtResponse;
-import com.example.Proyecto.Clases.Usuario;
-import com.example.Proyecto.Servicios.UserDetailsServiceImpl;
-import com.example.Proyecto.config.JwtUtils;
-
-import java.security.Principal;
 
 @Controller
 public class AuthenticationController {
@@ -65,5 +66,4 @@ public class AuthenticationController {
     public Usuario obtenerUsuarioActual(Principal principal){
         return (Usuario) this.userDetailsService.loadUserByUsername(principal.getName());
     }
-}
-*/
+}*/

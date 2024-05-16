@@ -16,8 +16,6 @@ import com.example.Proyecto.Clases.Usuario;
 import com.example.Proyecto.Repositorios.UsuarioRepository;
 
 
-
-
 @Component
 public class CustomUsersDetailsService implements AuthenticationProvider {
 
@@ -35,7 +33,7 @@ public class CustomUsersDetailsService implements AuthenticationProvider {
 
         // Ejemplo de autenticación básica
         Usuario user = userRepository.findByUsername(username);
-        if (user != null && password.equals(user.getPassword())) {
+        if (user != null && password.equals(user.getClave())) {
             List<GrantedAuthority> authorities = new ArrayList<>();
             // Aquí puedes agregar los roles del usuario, por ejemplo:
             // authorities.add(new SimpleGrantedAuthority("ROLE_USER"));

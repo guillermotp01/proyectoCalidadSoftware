@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InterVentaDetalle extends CrudRepository<DetallePedido, Integer> {
+public interface VentaDetalleRepository extends CrudRepository<DetallePedido, Integer> {
         @Query(value = "SELECT * FROM Venta_Detalle "
                         + "WHERE venta_id = ?1", nativeQuery = true)
         public List<DetallePedido> FindByIdVenta(int id);

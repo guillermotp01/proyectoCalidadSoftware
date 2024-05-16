@@ -1,18 +1,18 @@
 package com.example.Proyecto.Servicios;
 
 import com.example.Proyecto.Clases.Pedido;
-import com.example.Proyecto.Interfaces.InterVentaService;
-import com.example.Proyecto.Repositorios.InterVenta;
+import com.example.Proyecto.Interfaces.InterVenta;
+import com.example.Proyecto.Repositorios.VentaRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VentaService implements InterVentaService{
+public class VentaService implements InterVenta{
 
     @Autowired
-    private InterVenta data;
+    private VentaRepository data;
 
     @Override
     public List<Pedido> Listar() {

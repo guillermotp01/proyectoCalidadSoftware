@@ -13,20 +13,22 @@ import lombok.Data;
 @Entity
 @Table(name="Usuario")
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id_usuario;
     private String nombre;
     private String apellido;
-    private String tipoDocumento;
-    private int numeroDocumento;
+    private String tipo_documento;
+    private int numero_documento;
     private int celular;
     private String correo;
     private String username;
     private String clave;
     private String direccion;
-    
+
     @ManyToOne
     @JoinColumn(name = "id_rol")
     private Rol rol;
+
 }

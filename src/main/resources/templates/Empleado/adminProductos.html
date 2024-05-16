@@ -13,7 +13,7 @@
         <div th:replace="~{navegacion :: contenidoNavegacion}"></div>
     
         <div class="container my-5 min-vh-100">
-            <h3 class="text-center my-4">PRODUCTOS</h3>
+            <h3 class="text-center my-4">ADMINISTRAR PRODUCTOS</h3>
 
             <div class="d-flex justify-content-between">
                 <form action="/producto/filtrar" method="POST">
@@ -38,14 +38,18 @@
                 </form>                
             </div>
 
+            <a th:href="@{/producto/agregar}">
+                <button class="btn btn-outline-primary" type="submit">Agregar Producto</button>
+            </a>
             <hr>
+
             <div class="col-md-9 w-100">
                 <ul class="row p-0">
                     <div th:if="${productos.empty}" class="col-12 text-center mt-4">
                         <i class="bi bi-x-circle" style="color: red; font-size: 60px;"></i>
                         <p class="mt-4">No hay productos disponibles en este momento.</p>
                     </div>
-                    <div th:each="producto : ${productos}" class="col-12 col-md-4">
+                    <div th:each="producto,x : ${productos}" class="col-12 col-md-4">
                         <div class="mb-3 card">
                             <div class="mx-3 card-body">
                                 <div class="w-20 text-center">
@@ -62,13 +66,22 @@
                                             Detalles
                                         </a>                                        
                                     </button>
+                                    <button class="btn btn-warning">
+                                        <a th:href="@{/producto/editar/{id}(id=${producto.id_producto})}" target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
+                                            Editar
+                                        </a>                                        
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <a th:href="@{/producto/eliminar/{id}(id=${producto.id_producto})}" target="_self" class="text-white link-underline-opacity-0" style="text-decoration: none;">
+                                            Eliminar
+                                        </a>                                        
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </ul>
             </div>
-            
             
         </div>
         <div th:replace="~{footer :: contenidoFooter}"></div>
