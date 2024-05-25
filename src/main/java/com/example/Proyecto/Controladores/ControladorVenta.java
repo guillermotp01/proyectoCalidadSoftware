@@ -1,16 +1,16 @@
-/*package com.example.Proyecto.Controladores;
+package com.example.Proyecto.Controladores;
 
 import com.example.Proyecto.Clases.Carrito;
-import com.example.Proyecto.Clases.Cliente;
-import com.example.Proyecto.Clases.MedioPago;
 import com.example.Proyecto.Clases.Producto;
+import com.example.Proyecto.Clases.Usuario;
+import com.example.Proyecto.Interfaces.InterMedioPagoService;
 import com.example.Proyecto.Clases.Pedido;
 import com.example.Proyecto.Clases.DetallePedido;
-import com.example.Proyecto.Interfaces.IClienteService;
-import com.example.Proyecto.Interfaces.InterMedioPagoService;
-import com.example.Proyecto.Interfaces.InterProductoService;
-import com.example.Proyecto.Interfaces.InterVentaDetalleService;
-import com.example.Proyecto.Interfaces.InterVentaService;
+import com.example.Proyecto.Clases.MetodoPago;
+import com.example.Proyecto.Servicios.ProductoService;
+import com.example.Proyecto.Servicios.UsuarioService;
+import com.example.Proyecto.Servicios.VentaDetalleService;
+import com.example.Proyecto.Servicios.VentaService;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,33 +37,33 @@ public class ControladorVenta {
     String carpeta = "Venta/";
 
     @Autowired
-    private InterVentaService service; // Para poder usar los metodos
+    private VentaService service; // Para poder usar los metodos
 
     @Autowired
-    private InterProductoService service_p; // Para poder usar los metodos de Producto Interface
+    private ProductoService service_p; // Para poder usar los metodos de Producto Interface
 
     @Autowired
     InterMedioPagoService service_mp;
 
     @Autowired
-    InterVentaDetalleService service_vd;
+    VentaDetalleService service_vd;
 
     @Autowired
-    IClienteService service_cli;
+    UsuarioService service_cli;
 
     @PostMapping("/registrar") // localhost/registrarVenta
     public String RegistrarVenta(@RequestParam("user") String user,
             @RequestParam("clave") String pass,
-            @RequestParam("mediopago_id") MedioPago mediopago_id,
+            @RequestParam("mediopago_id") MetodoPago mediopago_id,
             @RequestParam("fec") String fec,
             Model model) throws ParseException {
 
-        List<Cliente> listC = service_cli.Listar();
-        Cliente ventasCli = new Cliente();
+        List<Usuario> listC = service_cli.Listar();
+        Usuario ventasCli = new Usuario();
 
         for (int i = 0; i < listC.size(); i++) {
             if (listC.get(i).getUsername().equals(user)) {
-                if (listC.get(i).clave.equals(pass)) {
+                if (listC.get(i).getClave().equals(pass)) {
                     ventasCli = listC.get(i);
                 }
             }
@@ -89,34 +89,32 @@ public class ControladorVenta {
 
         // c.setId(codigo);
         v.setFecha(fecha);
-        v.setCliente(ventasCli);
-        v.setMediopago(mediopago_id);
-        v.setTotalVenta(totalVenta);
+        v.setUsuario(ventasCli);
+        v.setMetodoPago(mediopago_id);
+        v.setTotal(totalVenta);
 
         service.Guardar(v);
 
         int id_venta = service.UltimoIdVenta();
         Pedido vv = new Pedido();
-        vv.setId(id_venta);
+        vv.setId_pedido(id_venta);
 
         // Registrar la venta detalle
         for (int i = 0; i < carritoLista.size(); i++) {
             int id_prod = carritoLista.get(i).getIdProducto();
             Producto p = new Producto();
-            p.setId(id_prod);
+            p.setId_producto(id_prod);
 
-            String descripcion = carritoLista.get(i).getDescripcion();
             Double precio = carritoLista.get(i).getPrecio();
-            Double cantidad = carritoLista.get(i).getCantidad();
+            int cantidad = carritoLista.get(i).getCantidad();
             Double total = carritoLista.get(i).getTotal();
 
             DetallePedido vd = new DetallePedido();
-            vd.setVenta(vv);
+            vd.setPedido(vv);
             vd.setProducto(p);
-            vd.setDescripcion(descripcion);
             vd.setCantidad(cantidad);
-            vd.setPrecio(precio);
-            vd.setTotal(total);
+            vd.setPrecio_unitario(precio);
+            vd.setPrecio_total(total);
 
             service_vd.Guardar(vd);
         }
@@ -129,29 +127,31 @@ public class ControladorVenta {
 
     @PostMapping("/agregar")
     public String agregarCarrito(@RequestParam("id") int producto_id,
-            @RequestParam("cant") double cantidad,
+            @RequestParam("cant") int cantidad,
             Model model) {
         Optional<Producto> producto = service_p.ConsultarId(producto_id);
-
+    
         String nombre = producto.get().getNombre();
         String descripcion = producto.get().getDescripcion();
         double precio = producto.get().getPrecio();
         double total = cantidad * precio;
-
+    
         // AGREGAMOS AL CARRITO
         Carrito carrito = new Carrito();
-
+    
         carrito.setIdProducto(producto_id);
         carrito.setProducto(nombre);
         carrito.setDescripcion(descripcion);
         carrito.setPrecio(precio);
         carrito.setCantidad(cantidad);
         carrito.setTotal(total);
-
+    
         carritoLista.add(carrito);
-
-        return listarCarrito(model);
+    
+        // Redirigir a listarCarrito para mostrar el contenido actualizado del carrito
+        return "redirect:/venta/listarCarrito";
     }
+    
 
     @GetMapping("/eliminarcarrito")
     public String eliminarCarrito(@RequestParam("cod") int codigo,
@@ -163,13 +163,13 @@ public class ControladorVenta {
     @GetMapping("/listar")
     public String listarVenta(Model model) {
         model.addAttribute("Venta", service.Listar());
-        return carpeta + "listaVenta"; // listaCliente.html
+        return "/Venta/listaVenta"; // listaCliente.html
     }
 
     @GetMapping("/listarCarrito")
     public String listarCarrito(Model model) {
         model.addAttribute("Carrito", carritoLista);
-        model.addAttribute("MedioPago", service_mp.Listar());
+        model.addAttribute("MetodoPago", service_mp.Listar());
         model.addAttribute("Cliente", service_cli.Listar());
         return carpeta + "carritoCompra"; // carritoCompra.html
     }
@@ -200,7 +200,7 @@ public class ControladorVenta {
     public String listarVentaDetalle(@RequestParam("cod") int codigo,Model model) {
         List<DetallePedido> vd = service_vd.BuscarPorIdVenta(codigo);
 
-         model.addAttribute("Venta", misVentas);
+        model.addAttribute("Venta", misVentas);
         model.addAttribute("VentaDetalle", vd);
         return carpeta + "reporteVenta"; // listaVenta.html
     }
@@ -210,20 +210,20 @@ public class ControladorVenta {
             @RequestParam("clave") String pass, Model model) {
 
         misVentas.clear();
-        List<Cliente> listC = service_cli.Listar();
+        List<Usuario> listC = service_cli.Listar();
         List<Pedido> listV = service.Listar();
-        Cliente ventasCli = new Cliente();
+        Usuario ventasCli = new Usuario();
 
         for (int i = 0; i < listC.size(); i++) {
             if (listC.get(i).getUsername().equals(user)) {
-                if (listC.get(i).clave.equals(pass)) {
+                if (listC.get(i).getClave().equals(pass)) {
                     ventasCli = listC.get(i);
                 }
             }
         }
 
         for (int i = 0; i < listV.size(); i++) {
-            if (listV.get(i).getCliente().getId() == ventasCli.getId()) {
+            if (listV.get(i).getUsuario().getId_usuario() == ventasCli.getId_usuario()) {
                 misVentas.add(listV.get(i));
             }
         }
@@ -231,11 +231,10 @@ public class ControladorVenta {
         model.addAttribute("Venta", misVentas);
         return carpeta + "reporteVenta"; // listaCliente.html
     }
-
+    
     @GetMapping("/reporte") // localhost/cliente/nuevo
     public String verReporte() {
         return carpeta + "reporteVenta"; // nuevoCliente.html
     }
 
 }
-*/

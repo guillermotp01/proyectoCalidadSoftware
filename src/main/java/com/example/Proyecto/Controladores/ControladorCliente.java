@@ -2,7 +2,6 @@ package com.example.Proyecto.Controladores;
 
 
 //import java.util.ArrayList;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.example.Proyecto.Clases.Producto;
 import com.example.Proyecto.Clases.Usuario;
 import com.example.Proyecto.Servicios.UsuarioService;
 
@@ -23,18 +19,13 @@ public class ControladorCliente {
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/registrar")
-	public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-		usuarioService.Guardar(usuario);
-		return "/menuPrincipal";
-	}
-
     @GetMapping("/listar")
 	public String listarUsuarios(Model modelo) {
 		modelo.addAttribute("usuarios", usuarioService.Listar());
 		return "/Empleado/adminUsuarios"; 
 	}
 
+    
     
     /* 
     @PostMapping("/registrar") 

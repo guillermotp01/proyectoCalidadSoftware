@@ -1,8 +1,9 @@
-/*package com.example.Proyecto.Controladores;
+package com.example.Proyecto.Controladores;
 
-import com.example.Proyecto.Clases.MedioPago;
+import com.example.Proyecto.Clases.MetodoPago;
 import com.example.Proyecto.Interfaces.InterMedioPagoService;
-//import java.util.ArrayList;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ControladorMedioPago {
 
-    //ArrayList<MedioPago> listaCli = new ArrayList();
+    ArrayList<MetodoPago> listaCli = new ArrayList();
     String carpeta = "MedioPago/";
 
     @Autowired
@@ -33,7 +34,7 @@ public class ControladorMedioPago {
     public String RegistrarMedioPago(@RequestParam("nom") String nombre, //@RequestParam("cod") int codigo,
             Model model) {
         //Aqui sera el proceso para registrar
-        MedioPago mp = new MedioPago();
+        MetodoPago mp = new MetodoPago();
 
         //c.setId(codigo);
         mp.setNombre(nombre);
@@ -53,9 +54,8 @@ public class ControladorMedioPago {
     @GetMapping("/eliminar")
     public String eliminarMedioPago(@RequestParam("cod") int codigo,
             Model model) {
-        /*
         for (int i = 0; i < listaCli.size(); i++) {
-            int c = listaCli.get(i).getId();
+            int c = listaCli.get(i).getId_metodo_pago();
             if (c == codigo) {
                 listaCli.remove(i);
             }
@@ -65,10 +65,10 @@ public class ControladorMedioPago {
         return listarMedioPago(model);
     }
 
-    @GetMapping("/editar")
+    /*@GetMapping("/editar")
     public String editarMedioPago(@RequestParam("cod") int codigo,
             Model model) {
-        /*
+        
         MedioPago cli = new MedioPago();
         for (int i = 0; i < listaCli.size(); i++) {
             int c = listaCli.get(i).getId();
@@ -93,9 +93,9 @@ public class ControladorMedioPago {
         Optional<MedioPago> cli = service.ConsultarId(codigo);
         model.addAttribute("MedioPago", cli);
         return carpeta + "editarMedioPago";
-    }
+    }*/
 
-    @PostMapping("/actualizar")
+    /*@PostMapping("/actualizar")
     public String actualizarMedioPago(@RequestParam("id") int codigo,
             @RequestParam("nombre") String nombre,
             Model model) {
@@ -111,7 +111,7 @@ public class ControladorMedioPago {
                 listaCli.get(i).setDireccion(direccion);
             }
         }
-         
+        
         MedioPago mp = new MedioPago();
 
         mp.setId(codigo);
@@ -120,15 +120,15 @@ public class ControladorMedioPago {
         service.Guardar(mp); //cuando se envia el ID -> Actualizar
 
         return listarMedioPago(model);
-    }
+    }*/
 
-    @PostMapping("/buscar")
+    /*@PostMapping("/buscar")
     public String buscarMedioPago(@RequestParam("desc") String desc,
             Model model) {
         List<MedioPago> lc = service.Buscar(desc);
         model.addAttribute("MedioPago", lc);
         return carpeta + "listaMedioPago";
-        /*
+        
         ArrayList<MedioPago> lc = new ArrayList();
 
         for (int i = 0; i < listaCli.size(); i++) {
@@ -160,7 +160,5 @@ public class ControladorMedioPago {
                 lc.add(cli);
             }
         }
-    
-    }
+    */
 }
-*/

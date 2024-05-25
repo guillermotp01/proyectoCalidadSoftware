@@ -26,7 +26,7 @@ public class ControladorPrincipal {
     }
     @GetMapping("/carrito") //localhost/
     public String verCarrito() {
-        return "carritoCompra"; //
+        return "/Venta/carritoCompra"; //
     }
     @GetMapping("/registro")
     public String Registrar(Model modelo) {
