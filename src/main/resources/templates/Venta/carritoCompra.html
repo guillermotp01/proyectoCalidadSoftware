@@ -15,122 +15,143 @@
 </head>
 
 <body>
-    <header style="background-color: lightgrey">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/}">
-                        <img width="250" height="65" src="/logo_ecodar.png" alt="alt" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" th:href="@{/}">
-                                    <i class="bi bi-house-fill"></i>
-                                    Inicio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/nosotros}">
-                                    <i class="bi bi-info-circle"></i>
-                                    Nosotros
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/producto/listar}">
-                                    <i class="bi bi-grid-fill"></i>
-                                    Productos
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/venta/reporte}">
-                                    <i class="bi bi-bag-fill"></i>
-                                    Mis Compras
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="carrito">
-                            <a class="nav-link active" th:href="@{/venta/listarCarrito}">
-                                <i class="bi bi-cart4"></i>
-                                <span class="montoCarrito">CARRITO</span>
-                            </a>
+   
+    <div th:replace="~{navegacion :: contenidoNavegacion}"></div>
+    
+    <main class = "min-vh-100 d-flex justify-content-center" >
+
+        <section>
+            <div class="container cards-wrapper" style="max-width: 540px;">
+                <div class="card mb-3 my-5" style="position: relative;">
+                  <button class="btn btn-primary menos-btn">-</button>
+                  <button class="btn btn-primary mas-btn">+</button>
+                  <button class="btn btn-danger delete-btn">Eliminar</button>
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="/Lejia.png" class="img-fluid rounded-start" alt="img">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Lejia</h5>
+                        <p class="card-text">Marca: Daryza</p>
+                        <p class="card-text">Precio: S/14.90</p>
+                        <p class="card-can">1</p>
+                        <p class="card-text">Cantidad: 1</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container cards-wrapper" style="max-width: 540px;">
+                <div class="card mb-3 my-5" style="position: relative;">
+                  <button type="button" class="btn btn-primary menos-btn">-</button>
+                  <button class="btn btn-primary mas-btn">+</button>
+                  <button class="btn btn-danger delete-btn">Eliminar</button>
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="/Aromatizador.png" class="img-fluid rounded-start" alt="img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">Aromatizador</h5>
+                          <p class="card-text">Marca: Sapolio</p>
+                          <p class="card-text">Precio: S/5.90</p>
+                          <p class="card-can">2</p>
+                          <p class="card-text">Cantidad: 2</p>
                         </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+        </section>
+        <section>
+            <div class="card mb-2 my-5 resumen-orden" style=" width: 340px">
+                <div class="row g-0">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Resumen de la orden</h5>
+                        <p class="card-text">Costo de Envio: </p>
+                        <p class="card-text">Subtotal: </p>
+                        <p class="card-text">Total: </p>
                     </div>
                 </div>
-            </nav>
-        </div>
-    </header>
-    <div style="box-sizing: content-box; color: white; background-color: dodgerblue;">
-        <div class="container my-5">
-            <div class="text-center" style="padding: 50px 0;">
-                <h1>CARRITO COMPRA</h1>
+            </div>
+        </section>
+        
+        
+    </main>
+    <!--
+    <main class = "min-vh-100">
+      <div style="box-sizing: content-box; color: white; background-color: dodgerblue;">
+            <div class="container my-5">
+                <div class="text-center" style="padding: 50px 0;">
+                    <h1>CARRITO COMPRA</h1>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <a th:href="@{/producto/listar}" class="btn btn-primary my-3" type="button">Ver Mas Productos</a>
-        <table class="table">
-            <thead>
-                <tr class="table-success">
-                    <th scope="col">#</th>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="carrito,x : ${Carrito}">
-                    <th th:text="${x.count}" scope="row"></th>
-                    <td th:text="${carrito.idProducto}"></td>
-                    <td th:text="${carrito.producto}"></td>
-                    <td th:text="${carrito.descripcion}"></td>
-                    <td th:text="${carrito.precio}"></td>
-                    <td th:text="${carrito.cantidad}"></td>
-                    <td th:text="${carrito.total}"></td>
-                    <td>
-                        <a th:href="@{/venta/eliminarcarrito(cod=${x.count})}" target="_self" style="color:red">
-                            <i class="bi bi-x-circle-fill"></i>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <form action="/venta/registrar" method="post" class="row g-3 my-3">
-            <div class="col-md-6">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control" name="user" placeholder="Nombre de Usuario">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Contraseña</label>
-                <input type="password" class="form-control" name="clave" placeholder="Contraseña">
-            </div>
-            <div class="col-md-6">
-                <label class="form-label">Medio Pago</label>
-                <select class="form-control" name="id_metodo_pago   " required>
-                    <option value="" selected disabled>Seleccione Medio de Pago</option>
-                    <option th:each="metodoPago: ${MetodoPago}" th:value="${metodoPago.id_metodo_pago}"
-                        th:text="${metodoPago.nombre}">
-                </select>
-            </div>
-            <div class="col-6">
-                <label class="form-label">Fecha</label>
-                <input type="datetime-local" class="form-control" name="fec" placeholder="fecha" required>
-            </div>
-            
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </form>
-    </div>
+        <div class="container">
+            <a th:href="@{/producto/listar}" class="btn btn-primary my-3" type="button">Ver Mas Productos</a>
+            <table class="table">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">#</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="carrito,x : ${Carrito}">
+                        <th th:text="${x.count}" scope="row"></th>
+                        <td th:text="${carrito.idProducto}"></td>
+                        <td th:text="${carrito.producto}"></td>
+                        <td th:text="${carrito.descripcion}"></td>
+                        <td th:text="${carrito.precio}"></td>
+                        <td th:text="${carrito.cantidad}"></td>
+                        <td th:text="${carrito.total}"></td>
+                        <td>
+                            <a th:href="@{/venta/eliminarcarrito(cod=${x.count})}" target="_self" style="color:red">
+                                <i class="bi bi-x-circle-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="/venta/registrar" method="post" class="row g-3 my-3">
+                <div class="col-md-6">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name="user" placeholder="Nombre de Usuario">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="clave" placeholder="Contraseña">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Medio Pago</label>
+                    <select class="form-control" name="id_metodo_pago   " required>
+                        <option value="" selected disabled>Seleccione Medio de Pago</option>
+                        <option th:each="metodoPago: ${MetodoPago}" th:value="${metodoPago.id_metodo_pago}"
+                            th:text="${metodoPago.nombre}">
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label class="form-label">Fecha</label>
+                    <input type="datetime-local" class="form-control" name="fec" placeholder="fecha" required>
+                </div>
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    -->
+    <div th:replace="~{footer :: contenidoFooter}"></div>
 </body>
 
 </html>

@@ -15,56 +15,8 @@
 </head>
 
 <body>
-    <header style="background-color: lightgrey">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" th:href="@{/}">
-                        <img width="250" height="65" src="/logo_ecodar.png" alt="alt" />
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link " aria-current="page" th:href="@{/}">
-                                    <i class="bi bi-house-fill"></i>
-                                    Inicio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/nosotros}">
-                                    <i class="bi bi-info-circle"></i>
-                                    Nosotros
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" th:href="@{/producto/listar}">
-                                    <i class="bi bi-grid-fill"></i>
-                                    Productos
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" th:href="@{/venta/reporte}">
-                                    <i class="bi bi-bag-fill"></i>
-                                    Mis Compras
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="carrito">
-                            <a class="nav-link active" th:href="@{/venta/listarCarrito}">
-                                <i class="bi bi-cart4"></i>
-                                <span class="montoCarrito">CARRITO</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </header>
+
+    <div th:replace="~{navegacion :: contenidoNavegacion}"></div>
 
     <div class="container my-5">
 
@@ -150,6 +102,8 @@
                 </tbody>
             </table>
     </div>
+
+    <div th:replace="~{footer :: contenidoFooter}"></div>
 </body>
 
 </html>

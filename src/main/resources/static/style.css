@@ -31,6 +31,60 @@ body{
     height: 300px;
 }
 
-li{
+
+li {
+    
     list-style: none;
+}
+
+.li-footer {
+    
+    list-style: none;
+    margin-left: -40px; 
+}
+
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.bi{
+    font-size: 25px;
+}
+
+.cards-wrapper{
+    column-gap: 8px;
+}
+.btn-primary{
+    color: #0dcaf0;
+}
+.mas-btn {
+    position: absolute;
+    bottom: 50px;
+    right: 5px;
+    font-size: 12px;
+    padding: 2px 6px;
+}
+.menos-btn {
+    position: absolute;
+    bottom: 50px; 
+    left: 380px;
+    font-size: 12px;
+    padding: 2px 6px;
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.card-can {
+    position: absolute;
+    bottom: 35px;
+    right: 40px;
+    font-size: 12px;
+    padding: 2px 6px;
+    text-align: center;
 }
