@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VentaRepository extends CrudRepository<Pedido,Integer>{
-    @Query(value = "SELECT id FROM Venta "
+    /*@Query(value = "SELECT id FROM Venta "
             + "ORDER BY id DESC "
             + "LIMIT 1", nativeQuery = true)
     public int ConsultarIdVenta();
@@ -20,5 +20,5 @@ public interface VentaRepository extends CrudRepository<Pedido,Integer>{
             + "OR descripcion LIKE %?1% "
             + "OR cantidad LIKE %?1% "
             + "OR precio LIKE %?1% ",nativeQuery=true)
-    public List<Pedido> findForAll(String desc); 
+    public List<Pedido> findForAll(String desc); */
 }
