@@ -115,10 +115,10 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Medio Pago</label>
-                <select class="form-control" name="mediopago_id" required>
+                <select class="form-control" name="id_metodo_pago   " required>
                     <option value="" selected disabled>Seleccione Medio de Pago</option>
-                    <option th:each="mediopago: ${MedioPago}" th:value="${mediopago.id}"
-                        th:text="${mediopago.nombre}">
+                    <option th:each="metodoPago: ${MetodoPago}" th:value="${metodoPago.id_metodo_pago}"
+                        th:text="${metodoPago.nombre}">
                 </select>
             </div>
             <div class="col-6">
