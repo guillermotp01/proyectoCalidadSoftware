@@ -36,11 +36,23 @@ public class VentaService implements InterVenta{
 
     @Override
     public List<Pedido> Buscar(String desc) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'Buscar'");
+    }
+
+    @Override
+    public int UltimoIdVenta() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'UltimoIdVenta'");
+    }
+
+    /*@Override
+    public List<Pedido> Buscar(String desc) {
         return data.findForAll(desc);
     }
 
     @Override
     public int UltimoIdVenta() {
         return data.ConsultarIdVenta();
-    } 
+    } */
 }

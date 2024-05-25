@@ -42,8 +42,8 @@ public class VentaDetalleService implements InterVentaDetalle {
     }
 
     @Override
-    public List<DetallePedido> BuscarPorIdVenta(int id) {
-        return data.FindByIdVenta(id);
+    public List<DetallePedido> BuscarPorIdVenta(int idDetalle) {
+        return data.findByIdDetalle(idDetalle);
     }
 
 }

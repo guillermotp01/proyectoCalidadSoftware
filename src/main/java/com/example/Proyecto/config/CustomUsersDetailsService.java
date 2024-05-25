@@ -20,23 +20,18 @@ import com.example.Proyecto.Repositorios.UsuarioRepository;
 public class CustomUsersDetailsService implements AuthenticationProvider {
 
     @Autowired
-    private UsuarioRepository userRepository; // Por ejemplo, suponiendo que tienes un repositorio de usuarios
+    private UsuarioRepository userRepository; 
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        // Aquí deberías realizar la lógica de autenticación, por ejemplo, consultando en la base de datos
-        // Si la autenticación es exitosa, devuelves un objeto Authentication con los roles del usuario
-        // Si la autenticación falla, lanzas una excepción AuthenticationException
 
-        // Ejemplo de autenticación básica
         Usuario user = userRepository.findByUsername(username);
         if (user != null && password.equals(user.getClave())) {
             List<GrantedAuthority> authorities = new ArrayList<>();
-            // Aquí puedes agregar los roles del usuario, por ejemplo:
-            // authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+            
             return new UsernamePasswordAuthenticationToken(username, password, authorities);
         } else {
             throw new BadCredentialsException("Credenciales inválidas");

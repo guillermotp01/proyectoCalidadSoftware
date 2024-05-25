@@ -1,30 +1,33 @@
-/*package com.example.Proyecto.Servicios;
+package com.example.Proyecto.Servicios;
 
-import com.example.Proyecto.Clases.MedioPago;
+
+import com.example.Proyecto.Clases.MetodoPago;
 import com.example.Proyecto.Interfaces.InterMedioPagoService;
-import com.example.Proyecto.Repositorios.InterMedioPago;
+import com.example.Proyecto.Repositorios.MedioPagoRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class MedioPagoService implements InterMedioPagoService{
+    
     @Autowired
-    private InterMedioPago data;
+    private MedioPagoRepository data;
 
     @Override
-    public List<MedioPago> Listar() {
-        return (List<MedioPago>) data.findAll();
+    public List<MetodoPago> Listar() {
+        return (List<MetodoPago>) data.findAll();
     }
 
     @Override
-    public Optional<MedioPago> ConsultarId(int id) {
+    public Optional<MetodoPago> ConsultarId(int id) {
         return data.findById(id);
     }
 
     @Override
-    public void Guardar(MedioPago mp) {
+    public void Guardar(MetodoPago mp) {
         data.save(mp);
     }
 
@@ -34,8 +37,7 @@ public class MedioPagoService implements InterMedioPagoService{
     }
 
     @Override
-    public List<MedioPago> Buscar(String desc) {
-        return data.findForAll(desc);
+    public List<MetodoPago> Buscar(String nombre) {
+        return data.findAllByNombre(nombre);
     }
 }
-*/

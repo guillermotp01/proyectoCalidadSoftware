@@ -20,6 +20,7 @@ public class UsuarioService implements InterUsuario{
     @Autowired
     private RolRepository rolRepository;
 
+
     @Override
     public List<Usuario> Listar() {
         return (List<Usuario>) repository.findAll();
@@ -29,6 +30,7 @@ public class UsuarioService implements InterUsuario{
     public Optional<Usuario> ConsultarId(int id) {
         return repository.findById(id);
     }
+
 
     @Override
     public Usuario Guardar(Usuario c) {
