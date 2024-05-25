@@ -1,4 +1,4 @@
-/*package com.example.Proyecto.Clases;
+package com.example.Proyecto.Clases;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -15,4 +15,4 @@ public class Authority implements GrantedAuthority {
         return this.authority;
     }
 
-}*/
+}

@@ -9,18 +9,19 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.math.BigDecimal;
 
 @Data
 @Entity
 @Table(name="DetallePedido")
 public class DetallePedido {
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id_detalle;
+    private int idDetalle;
+    
     private int cantidad;
-    private BigDecimal precio_unitario;
-    private BigDecimal precio_total;
+    private double precio_unitario;
+    private double precio_total;
     
     @ManyToOne
     @JoinColumn(name = "id_pedido")

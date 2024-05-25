@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.math.BigDecimal;
+
 import java.util.Date;
 
 @Data
@@ -21,7 +21,7 @@ public class Pedido {
     private int id_pedido;
     private Date fecha;
     private String estado;
-    private BigDecimal total;
+    private double total;
     
     @ManyToOne
     @JoinColumn(name = "id_usuario")

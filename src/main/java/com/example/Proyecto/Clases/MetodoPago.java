@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="MetodoPago")
+@Table(name="metodo_pago")
 public class MetodoPago {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

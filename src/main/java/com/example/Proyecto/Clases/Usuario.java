@@ -11,11 +11,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Usuario")
+@Table(name = "Usuario")
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_usuario;
     private String nombre;
     private String apellido;
@@ -29,6 +29,5 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "id_rol")
-    private Rol rol;
-
+    private Rol id_rol;
 }

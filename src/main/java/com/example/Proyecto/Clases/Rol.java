@@ -9,10 +9,10 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Rol")
+@Table(name = "Rol")
 public class Rol {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_rol;
-    private String nombre_rol;
+    private String nombre;
 }
